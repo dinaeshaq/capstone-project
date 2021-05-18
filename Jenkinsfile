@@ -35,4 +35,18 @@ node {
       }
     }
     
+    stage('Deploying to AWS EKS') {
+      echo 'Deploying to AWS EKS...'
+      dir ('./') {
+        withAWS(credentials: 'aws-credentials', region: 'us-west-2') {
+            sh "aws eks --region us-east-2 update-kubeconfig --name bn-prod"
+            sh "kubectl apply -f blue/blue-controller.json"
+            sh "kubectl apply -f green/green-controller.json"
+            sh "kubectl apply -f ./blue-green-service.json"
+            sh "kubectl get nodes"
+            sh "kubectl get pods"
+        }
+      }
+    }
+
 }
