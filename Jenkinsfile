@@ -55,6 +55,6 @@ node {
     
     stage("Cleaning up") {
       echo 'Cleaning up...'
-      sh "docker system prune -a -f "
+      sh "sudo docker system prune -a -f "
     }
 }
