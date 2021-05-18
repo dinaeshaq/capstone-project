@@ -44,11 +44,11 @@ node {
             sh "aws eks --region us-west-2 update-kubeconfig --name bn-prod"
             echo 'get kluster services'
             sh "/var/lib/jenkins/bin/kubectl get services"   
-            sh "kubectl apply -f blue/blue-controller.json"
-            sh "kubectl apply -f green/green-controller.json"
-            sh "kubectl apply -f ./blue-green-service.json"
-            sh "kubectl get nodes"
-            sh "kubectl get pods"
+            sh "/var/lib/jenkins/bin/kubectl apply -f blue/blue-controller.json"
+            sh "/var/lib/jenkins/bin/kubectl apply -f green/green-controller.json"
+            sh "/var/lib/jenkins/bin/kubectl apply -f ./blue-green-service.json"
+            sh "/var/lib/jenkins/bin/kubectl get nodes"
+            sh "/var/lib/jenkins/bin/kubectl get pods"
         }
       }
     }
