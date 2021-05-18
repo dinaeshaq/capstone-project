@@ -1,7 +1,7 @@
 FROM nginx
 
 
-RUN rm /usr/share/nginx/html/index.html
+RUN rm /usr/share/nginx/html/index.html;
 
 
 
